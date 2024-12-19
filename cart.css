@@ -1,0 +1,57 @@
+.table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Thiết kế cho hình ảnh sản phẩm */
+.table img {
+    max-width: 80px;
+    height: auto;
+}
+
+/* Thiết kế tổng cộng và nút hành động */
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.d-flex h4 {
+    font-size: 1.5rem;
+}
+
+.btn {
+    padding: 8px 20px;
+    font-size: 1rem;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .table {
+        font-size: 0.9rem;
+    }
+
+    .d-flex {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .d-flex h4 {
+        margin-bottom: 10px;
+    }
+
+    .btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .table img {
+        max-width: 50px;
+    }
+}
+
+/* Thêm khoảng cách cho các nút */
+.btn-sm {
+    font-size: 0.9rem;
+    padding: 5px 10px;
+}

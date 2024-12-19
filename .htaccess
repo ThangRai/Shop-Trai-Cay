@@ -1,0 +1,18 @@
+RewriteEngine On
+RewriteBase /shop/
+
+# Chuyển hướng từ /gioithieu tới /gioithieu.php
+RewriteRule ^gioi-thieu$ gioithieu.php [L]
+
+
+# Chuyển hướng từ /sanpham tới /sanpham.php
+RewriteRule ^san-pham$ sanpham.php [L]
+
+# Chuyển hướng từ /dichvu tới /dichvu.php
+RewriteRule ^dich-vu$ dichvu.php [L]
+
+# Chuyển hướng từ /tintuc tới /tintuc.php
+RewriteRule ^tin-tuc$ tintuc.php [L]
+
+# Chuyển hướng từ /lienhe tới /lienhe.php
+RewriteRule ^lien-he$ lienhe.php [L]
