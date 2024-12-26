@@ -71,7 +71,9 @@ $logos = mysqli_query($conn, "SELECT * FROM logos");
                 <!-- Giỏ hàng -->
                 <a href="cart.php" class="nav-link position-relative">
                     <i class="bi bi-cart"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
+                    <span id="cart-item-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        <?php echo isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0; ?>
+                    </span>
                 </a>
 
                 <!-- Kiểm tra nếu người dùng đã đăng nhập -->

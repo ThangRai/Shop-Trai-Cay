@@ -223,18 +223,19 @@ if (isset($_SESSION['message'])) {
 
 
     <div class="container mt-5">
-    <a href="sanpham.php" target="_blank">
-        <h2 class="title">Sản phẩm</h2>
-    </a>        <div class="row">
-            <?php while ($product = mysqli_fetch_assoc($products)) { 
-                // Tính phần trăm giảm giá
-                $discount = 0;
-                if ($product['product_price'] > 0) {
-                    $discount = round(((($product['product_price'] - $product['product_current_price']) / $product['product_price']) * 100), 2);
-                }
-            ?>
-                <div class="col-md-3">
-                    <div class="product-card">
+    <h2 class="title">Sản Phẩm</h2>
+    <div class="row">
+        <?php while ($product = mysqli_fetch_assoc($products)) { 
+            // Tính phần trăm giảm giá
+            $discount = 0;
+            if ($product['product_price'] > 0) {
+                $discount = round(((($product['product_price'] - $product['product_current_price']) / $product['product_price']) * 100), 2);
+            }
+        ?>
+            <div class="col-md-3">
+                <div class="product-card">
+                    <!-- Thẻ a bao quanh phần sản phẩm nhưng không bao gồm nút -->
+                    <a href="product_detail.php?id=<?php echo $product['id']; ?>" class="text-decoration-none text-dark">
                         <div class="position-relative">
                             <!-- Hiển thị % giảm giá -->
                             <?php if ($discount > 0) { ?>
@@ -244,7 +245,7 @@ if (isset($_SESSION['message'])) {
                         </div>
                         <div class="product-name"><?php echo $product['product_name']; ?></div>
                         
-                        <!-- Sử dụng d-flex để hiển thị giá gốc và giá hiện tại cùng một hàng -->
+                        <!-- Hiển thị giá gốc và giá hiện tại -->
                         <div class="d-flex justify-content-center align-items-center">
                             <div class="product-price text-decoration-line-through me-2">
                                 <?php echo number_format($product['product_price'], 0, ',', '.') . ' VND'; ?>
@@ -253,17 +254,18 @@ if (isset($_SESSION['message'])) {
                                 <?php echo number_format($product['product_current_price'], 0, ',', '.') . ' VND'; ?>
                             </div>
                         </div>
-                        
-                        <form action="cart.php" method="POST" class="add-to-cart-form">
-                            <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
-                            <button type="submit" class="btn btn-success add-to-cart-btn">Thêm vào giỏ hàng</button>
-                        </form>
+                    </a>
 
-                    </div>
+                    <!-- Nút "Thêm vào giỏ hàng" nằm ngoài thẻ <a> -->
+                    <form action="cart.php" method="POST" class="add-to-cart-form mt-2">
+                        <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+                        <button type="submit" class="btn btn-success add-to-cart-btn">Thêm vào giỏ hàng</button>
+                    </form>
                 </div>
-            <?php } ?>
-        </div>
+            </div>
+        <?php } ?>
     </div>
+</div>
 
     <div id="cart-popup" class="cart-popup">
         <div class="cart-popup-content">
